@@ -1,0 +1,19 @@
+<mat-card *ngFor="let mediaItem of mediaItems" class="example-card mb-5">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title
+      [ngClass]="{
+        'medium-movies': mediaItem.medium === 'Movies',
+        'medium-series': mediaItem.medium === 'Series'
+      }"
+      >{{ mediaItem.name | slice: 0:15 }}</mat-card-title
+    >
+    <mat-card-subtitle></mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p [appFavorite]="mediaItem.isFavorite">{{ mediaItem.medium }}</p>
+    <p>{{ mediaItem.category }}</p>
+    <p>{{ mediaItem.watchedOn | date: "shortDate" }}</p>
+    <p *ngIf="mediaItem.isFavorite">{{ mediaItem.isFavorite }}</p>
+  </mat-card-content>
+</mat-card>
